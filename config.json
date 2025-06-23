@@ -1,0 +1,26 @@
+{
+  "inbounds": [{
+    "port": 80,
+    "protocol": "vless",
+    "settings": {
+      "clients": [
+        {
+          "id": "7d04be3b-8d75-4fc9-a126-05d98db1ddd5",
+          "level": 0,
+          "email": "user@example.com"
+        }
+      ],
+      "decryption": "none"
+    },
+    "streamSettings": {
+      "network": "xhttp",
+      "xhttpSettings": {
+        "path": "/"
+      }
+    }
+  }],
+  "outbounds": [{
+    "protocol": "freedom",
+    "settings": {}
+  }]
+}
