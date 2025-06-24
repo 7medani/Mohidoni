@@ -36,7 +36,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "your-domain.up.railway.app",
+            "address": "mohidoni-production-88ae.up.railway.app",
             "port": 80,
             "users": [
               {
