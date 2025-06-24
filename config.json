@@ -1,26 +1,67 @@
 {
-  "inbounds": [{
-    "port": 80,
-    "protocol": "vless",
-    "settings": {
-      "clients": [
-        {
-          "id": "7d04be3b-8d75-4fc9-a126-05d98db1ddd5",
-          "level": 0,
-          "email": "user@example.com"
-        }
-      ],
-      "decryption": "none"
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 10808,
+      "listen": "0.0.0.0",
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      }
     },
-    "streamSettings": {
-      "network": "xhttp",
-      "xhttpSettings": {
-        "path": "/"
+    {
+      "port": 10809,
+      "listen": "0.0.0.0",
+      "protocol": "http",
+      "settings": {
+        "auth": "noauth",
+        "udp": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
       }
     }
-  }],
-  "outbounds": [{
-    "protocol": "freedom",
-    "settings": {}
-  }]
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "your-domain.up.railway.app",
+            "port": 80,
+            "users": [
+              {
+                "id": "cc6d535e-ea2e-488a-b419-b683b3df65f0",
+                "encryption": "none",
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "xhttpSettings": {
+          "path": "/pro",
+          "mode": "auto"
+        }
+      }
+    }
+  ],
+  "dns": {
+    "servers": ["1.1.1.1", "8.8.8.8"]
+  },
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": []
+  }
 }
